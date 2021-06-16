@@ -8,7 +8,7 @@ function TodosShow(props) {
 //  console.log(props.match.params.id)
     const id = parseInt(props.match.params.id)
     const { loading, error, data } = useQuery(GET_TODO ,
-      { variables: {id} }
+      { variables: {id} , fetchPolicy: "network-only" }
     );    
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;

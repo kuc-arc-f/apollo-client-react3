@@ -8,7 +8,7 @@ import { DELETE_TODO } from '../../graphql/todo';
 function TodosShow(props) {
     const id = parseInt(props.match.params.id)
     const { loading, error, data } = useQuery(GET_TODO ,
-      { variables: {id} }
+      { variables: {id} , fetchPolicy: "network-only" }
     );
     const [UpdateTodo, { retData }] = useMutation(UPDATE_TODO);
 console.log(retData)
@@ -20,16 +20,14 @@ console.log(deleteData)
       var title = document.getElementById('title');
 //console.log("clickHandler: " + title.value)
       UpdateTodo({ variables: { id: id,  title: title.value } });
-//      window.location.href= '/#/todos'
       alert("Complete, update");
-      props.history.push("/");
+      props.history.push("/todos");
     }
     const deleteHandler= function(){
 //console.log("clickHandler: " + title.value)
       RemoveTodo({ variables: { id: id } });
       alert("Complete, delete");
-      //window.location.href= '/#/todos'
-      props.history.push("/");
+      props.history.push("/todos");
     }    
     return (
       <div className="container py-2">

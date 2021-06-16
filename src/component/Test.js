@@ -1,8 +1,14 @@
 import React  from 'react';
-import { useState } from 'react';
+import { useState ,useEffect  } from 'react';
 
 function Page() {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+    console.log('副作用関数が実行されました！' + new Date() )
+  });
 
   const func1= function(){
     var name1 = document.getElementById('name1');
