@@ -5,7 +5,7 @@ import {
 } from "@apollo/client";
 import client from './apollo-client'
 
-// import Home from './component/Home';
+import Home from './component/Home';
 import Test from './component/Test';
 import Navbar from './component/Navbar';
 /* todos */
@@ -22,6 +22,7 @@ class App extends Component {
         <div>
           <ApolloProvider client={client}>
           <Navbar />
+            <Route exact path='/' component={Home} />
             <Route path='/test' component={Test} />
             <Route path='/todos' component={todos} />
             <Route path='/todo_show/:id' component={todoShow}/>
